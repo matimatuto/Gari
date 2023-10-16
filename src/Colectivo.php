@@ -12,7 +12,7 @@ class Colectivo {
 
     public function pagarCon($tarjeta,$boleto) {
         if ($tarjeta->obtenerSaldo() >= $this->tarifa) {
-            $tarjeta->restarSaldo($this->tarifa);
+            $tarjeta->descargarSaldo($this->tarifa);
             $boleto->actualizarBoleto($this->linea,$this->tarifa,$tarjeta->obtenerSaldo());
             
             return $boleto;
