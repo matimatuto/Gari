@@ -9,7 +9,7 @@ class Colectivo {
     
     public function __construct($lineaUsada = 0) {
         $this->linea = $lineaUsada;
-        $this->mitadTarifa = $this->tarifa / 2;
+        $this->mitadTarifa = $this->tarifa/2;
     }
 
     public function pagarCon($tarjeta,$boleto) {
@@ -19,7 +19,7 @@ class Colectivo {
             return $boleto;
         }
         elseif($tarjeta instanceof TarjetaFranquiciaParcial){
-            if($tarjeta->saldo >= $this->tarifa) {
+            if($tarjeta->saldo >= $this->mitadTarifa) {
             $tarjeta->descargarSaldo($this->mitadTarifa);
             $boleto->actualizarBoleto($this->linea,$this->mitadTarifa,$tarjeta->saldo,$tarjeta->tipo);
 
