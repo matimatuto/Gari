@@ -1,9 +1,9 @@
 <?php
 namespace TrabajoSube;
 class Tarjeta{
-    private $saldo;
-    private $plus = 2;
-    private $ID;
+    public $saldo;
+    public $plus = 2;
+    public $ID;
 
     public function __construct($saldoInicial = 0, $IDTarjeta = 0) {
         $this->saldo = $saldoInicial;
