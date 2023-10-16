@@ -21,7 +21,7 @@ class TarjetaFranquiciaParcial extends Tarjeta{
         $this->fechaUltimoViaje = date("Y-m-d", $tiempo);
     }
 
-    private function actualizarHabilitacion($tiempo) {
+    public function actualizarHabilitacion($tiempo) {
         if ($this->fechaUltimoViaje === date("Y-m-d",$tiempo)) {
             if($this->viajesHoy >= 4){
                 $this->habilitada = false;
@@ -35,7 +35,7 @@ class TarjetaFranquiciaParcial extends Tarjeta{
         }
     }
 
-    private function verificarHabilitada($tiempo) {
+    public function verificarHabilitada($tiempo) {
         if($this->tiempoUltimoViaje - $tiempo >= 300) {
             $this->habilitada = true;
             return $this->habilitada;
