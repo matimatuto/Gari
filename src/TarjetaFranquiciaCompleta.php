@@ -7,7 +7,7 @@ class TarjetaFranquiciaCompleta extends Tarjeta{
     public $viajesHoy = 0;
     public $fechaUltimoViaje;
 
-    public function __construct($saldoInicial,$tipoDeTarjeta = "Jubilados",$tiempo) {
+    public function __construct($saldoInicial,$tipoDeTarjeta = "Jubilados") {
         parent::__construct($saldoInicial);
         $this->tipo = $tipoDeTarjeta;
     }
