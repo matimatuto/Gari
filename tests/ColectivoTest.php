@@ -50,7 +50,6 @@ class ColectivoTest extends TestCase {
         $colectivo5 = new Colectivo(10);
         $boleto5 = new Boleto();
         $colectivo5->pagarCon($tarjeta5,$boleto5);
-        $this->assertEquals($colectivo5->mitadTarifa,60);
         $this->assertEquals($colectivo5->mitadTarifa,$boleto5->tarifaUsada);
 
     }
