@@ -25,7 +25,7 @@ class Tarjeta{
         $this->plus -= 1;
     }
 
-    public function restarSaldo($quitar) {
+    public function descargarSaldo($quitar) {
         $this->saldo -= $quitar;
     }
 
