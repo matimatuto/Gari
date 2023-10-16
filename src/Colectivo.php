@@ -31,7 +31,7 @@ class Colectivo {
                 
                 return $boleto;
             }
-
+            
             return false;
             
         }elseif ($tarjeta->saldo >= $this->tarifa) {
