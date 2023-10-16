@@ -4,11 +4,12 @@ namespace TrabajoSube;
 class Colectivo {
     public $linea;
     public $tarifa = 120;
-    public $mitadTarifa = 60;
+    public $mitadTarifa;
     public $sinTarifa = 0;
     
     public function __construct($lineaUsada = 0) {
         $this->linea = $lineaUsada;
+        $this->mitadTarifa = $this->tarifa/2;
     }
 
     public function pagarCon($tarjeta,$boleto) {
