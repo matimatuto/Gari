@@ -27,7 +27,7 @@ class Colectivo {
             case 'TrabajoSube\TarjetaFranquiciaParcial':
                 if(!$boletoDevuelto) {
                     if($tarjeta->verificarHabilitada($tiempo)) {
-                        if($tarjeta->saldo > $this->mitadTarifa) {
+                        if($tarjeta->saldo >= $this->mitadTarifa) {
                             $tarjeta->descargarSaldo($this->mitadTarifa);
                             $tarjeta->registrarViaje($tiempo);
                             $boleto->actualizarBoleto($this->linea,$this->mitadTarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
