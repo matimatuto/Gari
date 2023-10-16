@@ -2,9 +2,9 @@
 namespace TrabajoSube;
 
 class Tarjeta {
-    private $tipo = "Normal";
-    private $saldo;
-    private $plus = 2;
+    public $tipo = "Normal";
+    public $saldo;
+    public $plus = 2;
 
 
     public function __construct($saldoInicial) {
