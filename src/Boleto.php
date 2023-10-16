@@ -2,9 +2,9 @@
 namespace TrabajoSube;
 
 class Boleto {
-    private $lineaUsada;
-    private $tarifaUsada;
-    private $saldoRestante;
+    public $lineaUsada;
+    public $tarifaUsada;
+    public $saldoRestante;
 
     
     public function actualizarBoleto($linea,$tarifa,$saldo) {
