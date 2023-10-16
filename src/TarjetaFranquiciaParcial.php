@@ -2,7 +2,7 @@
 namespace TrabajoSube;
 
 class TarjetaFranquiciaCompleta extends Tarjeta{
-    private $tipo;
+    public $tipo;
 
     public function __construct($saldoInicial,$tipoDeTarjeta = "Estudiantil") {
         parent::__construct($saldoInicial);
