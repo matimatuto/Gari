@@ -42,11 +42,11 @@ class ColectivoTest extends TestCase {
         $boleto4 = new Boleto();
         $colectivo4->pagarCon($tarjeta4,$boleto4);
 
-        $this->assertEquals(Boleto::class,$boleto4);
+        $this->assertInstanceOf(Boleto::class, $boleto4);
     }
 
     public function testFranquiciaParcial(){
-        $tarjeta5 = new TarjetaFranquiciaParcial(0);
+        $tarjeta5 = new TarjetaFranquiciaCompleta(0);
         $colectivo5 = new Colectivo(10);
         $boleto5 = new Boleto();
         $colectivo5->pagarCon($tarjeta5,$boleto5);

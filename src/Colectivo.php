@@ -13,25 +13,26 @@ class Colectivo {
     }
 
     public function pagarCon($tarjeta,$boleto) {
-        if ($tarjeta instanceof TarjetaFranquiciaCompleta) {
+        if ($tarjeta instanceof TarjetaFranquiciaCompleta){
             $boleto->actualizarBoleto($this->linea,$this->sinTarifa,$tarjeta->saldo,$tarjeta->tipo);
 
             return $boleto;
-        }elseif($tarjeta instanceof TarjetaFranquiciaParcial){
-
+        }
+        elseif($tarjeta instanceof TarjetaFranquiciaParcial){
             if($tarjeta->saldo >= $this->tarifa) {
             $tarjeta->descargarSaldo($this->mitadTarifa);
             $boleto->actualizarBoleto($this->linea,$this->mitadTarifa,$tarjeta->saldo,$tarjeta->tipo);
 
             return $boleto;
-            }elseif($tarjeta->saldo - $this->mitadTarifa > -211.84 && $tarjeta->plus > 0) {
+            }
+            elseif($tarjeta->saldo - $this->mitadTarifa > -211.84 && $tarjeta->plus > 0) {
                 $tarjeta->descargarSaldo($this->tarifa);
                 $boleto->actualizarBoleto($this->linea,$this->tarifa,$tarjeta->saldo,$tarjeta->tipo);
                 $tarjeta->plus --;
                 
                 return $boleto;
             }
-            
+
             return false;
             
         }elseif ($tarjeta->saldo >= $this->tarifa) {
