@@ -12,7 +12,7 @@ class Colectivo {
         $this->mitadTarifa = $this->tarifa/2;
     }
 
-    public function pagarCon($tarjeta,$boleto,$tiempo){
+    public function pagarCon($tarjeta,$boleto,$tiempo=0){
         $boletoDevuelto = false;
         switch(get_class($tarjeta)) {
             case 'TrabajoSube\TarjetaFranquiciaCompleta':
