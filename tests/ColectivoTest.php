@@ -46,7 +46,7 @@ class ColectivoTest extends TestCase {
     }
 
     public function testFranquiciaParcial(){
-        $tarjeta5 = new TarjetaFranquiciaParcial(0);
+        $tarjeta5 = new TarjetaFranquiciaParcial(60);
         $colectivo5 = new Colectivo(10);
         $boleto5 = new Boleto();
         $colectivo5->pagarCon($tarjeta5,$boleto5);
