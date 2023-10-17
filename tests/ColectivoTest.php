@@ -83,7 +83,7 @@ class ColectivoTest extends TestCase {
         $tarjeta5 = new TarjetaFranquiciaParcial(6600);
         $colectivo2 = new Colectivo(10);
         $boleto2 = new Boleto();
-        $tiempoFalso2 = new TiempoFalso();
+        $tiempoFalso2 = new TiempoFalso(0);
 
         $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
         $tiempoFalso2->avanzar(120);
@@ -106,7 +106,7 @@ class ColectivoTest extends TestCase {
         $tiempoFalso3 = new TiempoFalso(0);
 
         
-        $this->assertEquals('TrabajoSube\TarjetaFranquiciaComplet',get_class($tarjeta6));
+        $this->assertEquals('TrabajoSube\TarjetaFranquiciaCompleta',get_class($tarjeta6));
         $colectivo3->pagarCon($tarjeta6,$boleto3,$tiempoFalso3->time());
         $colectivo3->pagarCon($tarjeta6,$boleto3,$tiempoFalso3->time());
         $this->assertEquals($colectivo3->sinTarifa,$boleto3->tarifaUsada);
