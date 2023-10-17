@@ -141,10 +141,10 @@ class ColectivoTest extends TestCase {
         $this->assertEquals($colectivo1->tarifa, $colectivo1->tarifa);
         $tarjeta1->establecerDias(32);
         $colectivo1->pagarCon($tarjeta1,$boleto1,$tiempoFalso1->time());
-        $this->assertEquals($colectivo1->tarifa * 0.8, $colectivo1->tarifa);
+        $this->assertEquals($colectivo1->tarifa * 0.8, $colectivo1->tarifaModificada);
         $tarjeta1->establecerDias(82);
         $colectivo1->pagarCon($tarjeta1,$boleto1,$tiempoFalso1->time());
-        $this->assertEquals($colectivo1->tarifa * 0.75, $colectivo1->tarifa);
+        $this->assertEquals($colectivo1->tarifa * 0.75, $colectivo1->tarifaModificada);
     }
 
     public function testDias() {
