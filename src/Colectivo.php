@@ -15,7 +15,7 @@ class Colectivo {
         $boletoDevuelto = false;
         switch(get_class($tarjeta)) {
             case 'TrabajoSube\TarjetaFranquiciaCompleta':
-                if($tarjeta->habilitada) {
+                if($tarjeta->verificarHabilitada($tiempo)) {
                     $tarjeta->descargarSaldo($this->tarifaModificada);
                     $tarjeta->registrarViaje($tiempo);
                     $boleto->actualizarBoleto($this->linea,$this->tarifaModificada,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
