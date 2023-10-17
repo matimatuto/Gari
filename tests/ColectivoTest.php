@@ -114,7 +114,7 @@ class ColectivoTest extends TestCase {
     
 
     public function testSaldoExtra() {
-        $tarjeta7 = new TarjetaFranquiciaCompleta(6100);
+        $tarjeta7 = new Tarjeta(6100);
         $colectivo4 = new Colectivo(10);
         $boleto4 = new Boleto();
         $tiempoFalso4 = new TiempoFalso();
