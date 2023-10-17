@@ -6,9 +6,6 @@ class TarjetaFranquiciaCompleta extends Tarjeta{
     public $habilitada = true;
     public $viajesHoy = 0;
     public $fechaUltimoViaje;
-    
-    public $dia;
-    public $hora;
 
 
     public function __construct($saldoInicial,$tipoDeTarjeta = "Jubilados") {
