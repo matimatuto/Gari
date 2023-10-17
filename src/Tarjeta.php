@@ -4,29 +4,59 @@ namespace TrabajoSube;
 class Tarjeta {
     protected $tipo = "Normal";
     protected $saldo;
+    protected $saldoExtra;
     protected $plus = 2;
+    protected $historialSaldo = [];
+    protected $ID;
 
 
-    public function __construct($saldoInicial = 0) {
+    public function __construct($saldoInicial = 0, $IDTarjeta = 0) {
         $this->saldo = $saldoInicial;
+        $this->ID = $IDTarjeta;
+        $this->historialSaldo[] = $saldoInicial;
     }
 
     public function cargarTarjeta($cargarSaldo) {
-        if ($this->saldo + $cargarSaldo < 6600 && in_array($cargarSaldo,[150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000])) {
+    if (in_array($cargarSaldo,[150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000])) {
+        if($this->saldo + $cargarSaldo <= 6600){
             $this->saldo += $cargarSaldo;
             if ($this->saldo > 0) {
-                $this->saldo = 2;
+                $this->plus = 2;
             }
+        
             return true;
         }
         else {
-            return false;
+            $excess = $this->saldo + $cargarSaldo - 6600;
+            $this->saldo = 6600;
+            $this->saldoExtra = $excess;
+
+            return true;
+        }
+    }
+    else {
+        return false;
+    }
+}
+
+
+    public function descargarSaldo($restarSaldo) {
+        $this->historialSaldo[] = $this->saldo;
+        $this->saldo -= $restarSaldo;
+    }
+
+    public function agregarSaldoExtra() {
+        if($this->saldo < 6600 && $this->saldo + $this->saldoExtra > 6600) {
+            $this->saldoExtra -= (6600 - $this->saldo);
+            $this->saldo = 6600;
+        }
+        elseif($this->saldo + $this->saldoExtra <= 6600) {
+            $this->saldo += $this->saldoExtra;
+            $this->saldoExtra = 0;
         }
     }
 
-    public function descargarSaldo($restarSaldo) {
-        $this->saldo -= $restarSaldo;
-    }
+
 
     public function descargarPlus(){
         $this->plus--;
@@ -41,8 +71,13 @@ class Tarjeta {
     public function obtenerPlus() {
         return $this->plus;
     }
-
-
+    public function obtenerID() {
+        return $this->ID;
+    }
+    public function obtenerSaldoExtra() {
+        return $this->saldoExtra;
+    }
+    
 }
 
 
