@@ -4,12 +4,11 @@ namespace TrabajoSube;
 class Colectivo {
     public $linea;
     public $tarifa = 120;
-    public $mitadTarifa;
-    public $sinTarifa = 0;
-    
+    private $tarifaModificada;
+    public $lineasIterurbanas = [1000,1001,1002];
+
     public function __construct($lineaUsada = 0) {
         $this->linea = $lineaUsada;
-        $this->mitadTarifa = $this->tarifa/2;
     }
 
     public function pagarCon($tarjeta,$boleto,$tiempo=0){
@@ -17,9 +16,9 @@ class Colectivo {
         switch(get_class($tarjeta)) {
             case 'TrabajoSube\TarjetaFranquiciaCompleta':
                 if($tarjeta->habilitada) {
-                    $tarjeta->descargarSaldo($this->sinTarifa);
+                    $tarjeta->descargarSaldo($this->tarifaModificada);
                     $tarjeta->registrarViaje($tiempo);
-                    $boleto->actualizarBoleto($this->linea,$this->sinTarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
+                    $boleto->actualizarBoleto($this->linea,$this->$this->tarifaModificada,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
     
                     $boletoDevuelto = true;
                     return $boleto;
@@ -28,10 +27,10 @@ class Colectivo {
             case 'TrabajoSube\TarjetaFranquiciaParcial':
                 if(!$boletoDevuelto) {
                     if($tarjeta->verificarHabilitada($tiempo)) {
-                        if($tarjeta->saldo >= $this->mitadTarifa) {
-                            $tarjeta->descargarSaldo($this->mitadTarifa);
+                        if($tarjeta->saldo >= $this->tarifaModificada) {
+                            $tarjeta->descargarSaldo($this->tarifaModificada);
                             $tarjeta->registrarViaje($tiempo);
-                            $boleto->actualizarBoleto($this->linea,$this->mitadTarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
+                            $boleto->actualizarBoleto($this->linea,$this->tarifaModificada,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
     
                             $boletoDevuelto = true;
                             return $boleto;
@@ -59,6 +58,39 @@ class Colectivo {
                 }
         }
     }
-    
+    public function actualizarTarifa($tarjeta){
+        if(in_array($this->linea,$this->lineasIterurbanas)) {
+            $this->tarifa = 184;
+        }
+
+        if(get_class($tarjeta) == 'TrabajoSube\TarjetaFranquiciaCompleta' && $tarjeta->habilitada) {
+            $this->tarifaModificada = 0;
+        }
+        elseif(get_class($tarjeta) == 'TrabajoSube\TarjetaFranquiciaParcial' && $tarjeta->habilitada) {
+            $this->tarifaModificada = $this->tarifa * 0.5;
+        }
+        elseif(get_class($tarjeta) == 'TrabajoSube\Tarjeta') {
+            if($tarjeta->vecesUsadaMes < 30) {
+                $this->tarifaModificada = $this->tarifa;
+            }
+            elseif($tarjeta->vecesUsadaMes < 80) {
+                $this->tarifaModificada = $this->tarifa * 0.8;
+            }
+            else {
+                $this->tarifaModificada = $this->tarifa * 0.75;
+            }
+        }
+        else {
+            $this->tarifaModificada = $this->tarifa;
+        }
+    }
+
+    public function actualizarDias($tarjeta,$tiempo) {
+        if(get_class($tarjeta) == 'TrabajoSube\Tarjeta') {
+            $tarjeta->vecesUsadaMes++;
+            $mes = date("m",$tiempo);
+            $tarjeta->actualizarMes($mes);
+        }
+    }
     }
 ?>
