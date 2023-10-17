@@ -4,7 +4,7 @@ namespace TrabajoSube;
 class Colectivo {
     public $linea;
     public $tarifa = 120;
-    private $tarifaModificada;
+    public $tarifaModificada;
     public $lineasIterurbanas = [1000,1001,1002];
 
     public function __construct($lineaUsada = 0) {
