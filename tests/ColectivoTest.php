@@ -12,9 +12,9 @@ class ColectivoTest extends TestCase {
         $colectivo1->pagarCon($tarjeta1,$boleto1);
 
         $this->assertInstanceOf(Boleto::class, $boleto1);
-        $this->assertEquals($colectivo1->linea, $boleto1->lineaUsada);
-        $this->assertEquals($colectivo1->tarifa, $boleto1->tarifaUsada);
-        $this->assertEquals($tarjeta1->saldo, $boleto1->saldoRestante);
+        $this->assertEquals($colectivo1->obtenerLinea(), $boleto1->obtenerLineaUsada());
+        $this->assertEquals($colectivo1->obtenerTarifa(), $boleto1->obtenerTarifaUsada());
+        $this->assertEquals($tarjeta1->obtenerSaldo(), $boleto1->obtenerSaldoRestante());
     }
 
     public function testPagarBoletoErroneo(){

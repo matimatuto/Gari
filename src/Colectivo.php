@@ -2,8 +2,8 @@
 namespace TrabajoSube;
 
 class Colectivo {
-    public $linea;
-    public $tarifa = 120;
+    private $linea;
+    private $tarifa = 120;
 
 
     public function __construct($lineaUsada = 0) {
@@ -20,6 +20,13 @@ class Colectivo {
         else {
             return false;
         }
+    }
+
+    public function obtenerLinea(){
+        return $this->linea;
+    }
+    public function obtenerTarifa(){
+        return $this->tarifa;
     }
 }
 

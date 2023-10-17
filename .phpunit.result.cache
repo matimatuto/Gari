@@ -1,1 +1,1 @@
-{"version":1,"defects":{"TrabajoSube\\ColectivoTest::testGetlinea":8},"times":{"TrabajoSube\\ColectivoTest::testGetlinea":0.076}}
+{"version":1,"defects":{"TrabajoSube\\ColectivoTest::testGetlinea":8,"TrabajoSube\\ColectivoTest::testPagarBoleto":8},"times":{"TrabajoSube\\ColectivoTest::testGetlinea":0.076,"TrabajoSube\\ColectivoTest::testPagarBoleto":0.014,"TrabajoSube\\ColectivoTest::testPagarBoletoErroneo":0.002}}
