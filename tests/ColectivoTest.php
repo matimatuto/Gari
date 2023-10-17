@@ -42,7 +42,8 @@ class ColectivoTest extends TestCase {
         $tarjeta4 = new TarjetaFranquiciaCompleta(0);
         $colectivo4 = new Colectivo(10);
         $boleto4 = new Boleto();
-        $boleto4 = $colectivo4->pagarCon($tarjeta4,$boleto4);
+        $tiempoFalso4 = new TiempoFalso(0);
+        $boleto4 = $colectivo4->pagarCon($tarjeta4,$boleto4,$tiempoFalso4->time());
 
         $this->assertInstanceOf(Boleto::class, $boleto4);
     }
@@ -65,11 +66,12 @@ class ColectivoTest extends TestCase {
         $colectivo1 = new Colectivo(10);
         $boleto1 = new Boleto();
 
+        $tiempoFalso4 = new TiempoFalso(0);
 
         $boleto1 = $colectivo1->pagarCon($tarjeta1,$boleto1);
         $this->assertEquals("Normal", $boleto1->tipoTarjeta);
 
-        $boleto1 = $colectivo1->pagarCon($tarjeta2,$boleto1);
+        $boleto1 = $colectivo1->pagarCon($tarjeta2,$boleto1,$tiempoFalso4->time());
         $this->assertEquals("Jubilados", $boleto1->tipoTarjeta);
 
         $boleto1 = $colectivo1->pagarCon($tarjeta3,$boleto1);
