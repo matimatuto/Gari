@@ -36,7 +36,7 @@ class TarjetaFranquiciaCompleta extends Tarjeta{
             $this->habilitada = true;
         }
     }
-    private function verificarHabilitada($tiempo) {
+    public function verificarHabilitada($tiempo) {
         $dia = date("N",$tiempo);
         $hora = date("G",$tiempo);
 
