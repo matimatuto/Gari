@@ -83,7 +83,7 @@ class ColectivoTest extends TestCase {
         $tarjeta5 = new TarjetaFranquiciaParcial(6600);
         $colectivo2 = new Colectivo(10);
         $boleto2 = new Boleto();
-        $tiempoFalso2 = new TiempoFalso();
+        $tiempoFalso2 = new TiempoFalso(0);
 
         $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2);
         $tiempoFalso2->avanzar(120);
@@ -103,7 +103,7 @@ class ColectivoTest extends TestCase {
         $tarjeta6 = new TarjetaFranquiciaCompleta(6600);
         $colectivo3 = new Colectivo(10);
         $boleto3 = new Boleto();
-        $tiempoFalso3 = new TiempoFalso();
+        $tiempoFalso3 = new TiempoFalso(0);
 
         $colectivo3->pagarCon($tarjeta6,$boleto3,$tiempoFalso3);
         $colectivo3->pagarCon($tarjeta6,$boleto3,$tiempoFalso3);
