@@ -53,6 +53,7 @@ class ColectivoTest extends TestCase {
         $boleto5 = new Boleto();
         $colectivo5->pagarCon($tarjeta5,$boleto5);
         $this->assertEquals('TrabajoSube\TarjetaFranquiciaParcial',get_class($tarjeta5));
+        $this->assertEquals(61,$tarjeta5->saldo);
         $this->assertEquals($colectivo5->mitadTarifa,$boleto5->tarifaUsada);
 
     }
