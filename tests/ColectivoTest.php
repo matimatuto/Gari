@@ -74,7 +74,7 @@ class ColectivoTest extends TestCase {
         $boleto1 = $colectivo1->pagarCon($tarjeta3,$boleto1,25200);
         $this->assertEquals("Estudiantil", $boleto1->tipoTarjeta);
 
-        $boleto1 = $colectivo1->pagarCon($tarjeta4,$boleto1);
+        $boleto1 = $colectivo1->pagarCon($tarjeta4,$boleto1,25200);
         $this->assertEquals("Ejemplo", $boleto1->tipoTarjeta);
     }
 
