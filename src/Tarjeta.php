@@ -3,12 +3,13 @@ namespace TrabajoSube;
 
 class Tarjeta {
     protected $tipo = "Normal";
+    protected $ID;
     protected $saldo;
     protected $saldoExtra;
     protected $plus = 2;
     protected $historialSaldo = [];
-    protected $ID;
-
+    private $vecesUsadaMes = 0;
+    private $ultimoMes;
 
     public function __construct($saldoInicial = 0, $IDTarjeta = 0) {
         $this->saldo = $saldoInicial;
@@ -77,7 +78,27 @@ class Tarjeta {
     public function obtenerSaldoExtra() {
         return $this->saldoExtra;
     }
+    public function obtenerVecesUsadaMes() {
+        return $this->vecesUsadaMes;
+    }
     
+    public function actualizarMes($mes) {
+        if($this->ultimoMes == $mes || $this->ultimoMes == null){
+            $this->ultimoMes = $mes;
+        }
+        else {
+            $this->vecesUsadaMes = 0;
+            $this->ultimoMes = $mes;
+        }
+    }
+
+    public function sumarVecesUsadas() {
+        $this->vecesUsadaMes++;
+    }
+
+    public function establecerDias($dias){
+        $this->vecesUsadaMes = $dias;
+    }
 }
 
 

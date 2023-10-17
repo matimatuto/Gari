@@ -2,11 +2,11 @@
 namespace TrabajoSube;
 
 class TarjetaFranquiciaParcial extends Tarjeta{
-    public $tipo;
-    public $habilitada = true;
-    public $viajesHoy = 0;
-    public $tiempoUltimoViaje;
-    public $fechaUltimoViaje;
+    protected $tipo;
+    private $habilitada = true;
+    private $viajesHoy = 0;
+    private $tiempoUltimoViaje = 0;
+    private $fechaUltimoViaje;
 
 
     public function __construct($saldoInicial,$tipoDeTarjeta = "Estudiantil") {
@@ -35,8 +35,12 @@ class TarjetaFranquiciaParcial extends Tarjeta{
         }
     }
 
+   
     public function verificarHabilitada($tiempo) {
-        if($this->tiempoUltimoViaje==null || $this->tiempoUltimoViaje - $tiempo >= 300) {
+        $dia = date("N",$tiempo);
+        $hora = date("G",$tiempo);
+
+        if($tiempo - $this->tiempoUltimoViaje >= 300 && $dia >= 1 && $dia <= 5 && $hora >= 6 && $hora <= 22) {
             $this->habilitada = true;
             return $this->habilitada;
         }
@@ -44,6 +48,10 @@ class TarjetaFranquiciaParcial extends Tarjeta{
             $this->habilitada = false;
             return $this->habilitada;
         }
+    }
+
+    public function obtenerHabilitada(){
+        return $this->habilitada;
     }
 }
 ?>
