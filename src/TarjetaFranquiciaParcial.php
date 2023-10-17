@@ -36,14 +36,14 @@ class TarjetaFranquiciaParcial extends Tarjeta{
     }
 
     public function verificarHabilitada($tiempo) {
-        if($this->tiempoUltimoViaje==null || $this->tiempoUltimoViaje - $tiempo >= 300) {
-            $this->habilitada = true;
-            return $this->habilitada;
-        }
-        else {
-            $this->habilitada = false;
-            return $this->habilitada;
-        }
+    if($this->tiempoUltimoViaje == null || $this->tiempoUltimoViaje - $tiempo->time() >= 300) {
+        $this->habilitada = true;
     }
+    else {
+        $this->habilitada = false;
+    }
+    return $this->habilitada;
+}
+
 }
 ?>
