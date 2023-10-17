@@ -5,12 +5,13 @@ class Boleto {
     private $lineaUsada;
     private $tarifaUsada;
     private $saldoRestante;
+    private $tipoTarjeta;
 
-    
-    public function actualizarBoleto($linea,$tarifa,$saldo) {
+    public function actualizarBoleto($linea,$tarifa,$saldo,$tipoDeTarjeta) {
         $this->lineaUsada = $linea;
         $this->tarifaUsada = $tarifa;
         $this->saldoRestante = $saldo;
+        $this->tipoTarjeta = $tipoDeTarjeta;
     }
 
     public function obtenerLineaUsada() {
@@ -21,6 +22,9 @@ class Boleto {
     }
     public function obtenerSaldoRestante() {
         return $this->saldoRestante;
+    }
+    public function obtenerTipoTarjeta() {
+        return $this->tipoTarjeta;
     }
 }
 ?>
