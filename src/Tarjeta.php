@@ -45,15 +45,16 @@ class Tarjeta {
     }
 
     public function agregarSaldoExtra() {
-        if($this->saldo + $this->saldoExtra <= 6600) {
+        if($this->saldo < 6600 && $this->saldo + $this->saldoExtra > 6600) {
+            $this->saldoExtra -= (6600 - $this->saldo);
+            $this->saldo = 6600;
+        }
+        elseif($this->saldo + $this->saldoExtra <= 6600) {
             $this->saldo += $this->saldoExtra;
             $this->saldoExtra = 0;
         }
-        elseif($this->saldo) {
-            $this->saldoExtra = 6600 - $this->saldo;
-            $this->saldo = 6600;
-        }
     }
+    
 }
 
 
