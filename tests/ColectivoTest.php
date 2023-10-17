@@ -84,20 +84,21 @@ class ColectivoTest extends TestCase {
         $colectivo2 = new Colectivo(10);
         $boleto2 = new Boleto();
         $tiempoFalso2 = new TiempoFalso(0);
-
-        $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
+    
+        $boleto2 = $colectivo2->pagarCon($tarjeta5,$boleto2,$tiempoFalso2->time());
         $tiempoFalso2->avanzar(120);
-        $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
+        $boleto2 = $colectivo2->pagarCon($tarjeta5,$boleto2,$tiempoFalso2->time());
         $this->assertEquals($colectivo2->tarifa,$boleto2->tarifaUsada);
         $tiempoFalso2->avanzar(300);
-        $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
+        $boleto2 = $colectivo2->pagarCon($tarjeta5,$boleto2,$tiempoFalso2->time());
         $this->assertEquals($colectivo2->mitadTarifa,$boleto2->tarifaUsada);
         $tiempoFalso2->avanzar(500);
-        $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
+        $boleto2 = $colectivo2->pagarCon($tarjeta5,$boleto2,$tiempoFalso2->time());
         $tiempoFalso2->avanzar(500);
-        $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
+        $boleto2 = $colectivo2->pagarCon($tarjeta5,$boleto2,$tiempoFalso2->time());
         $this->assertEquals($colectivo2->tarifa,$boleto2->tarifaUsada);
     }
+    
 
     public function testCompletaHabilitada() {
         $tarjeta6 = new TarjetaFranquiciaCompleta(6600);
