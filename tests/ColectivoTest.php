@@ -9,7 +9,7 @@ class ColectivoTest extends TestCase {
         $colectivo1 = new Colectivo(10);
         $boleto1 = new Boleto();
 
-        $colectivo1->pagarCon($tarjeta1,$boleto1,);
+        $colectivo1->pagarCon($tarjeta1,$boleto1);
 
         $this->assertInstanceOf(Boleto::class, $boleto1);
         $this->assertEquals($colectivo1->linea, $boleto1->lineaUsada);

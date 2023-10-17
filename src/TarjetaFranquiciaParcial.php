@@ -40,7 +40,7 @@ class TarjetaFranquiciaParcial extends Tarjeta{
         $dia = date("N",$tiempo);
         $hora = date("G",$tiempo);
 
-        if($this->tiempoUltimoViaje==null || ($this->tiempoUltimoViaje - $tiempo >= 300 && $dia >= 1 && $dia <= 5 && $hora >= 6 && $hora <= 22)) {
+        if(($this->tiempoUltimoViaje - $tiempo >= 300 && $dia >= 1 && $dia <= 5 && $hora >= 6 && $hora <= 22)) {
             $this->habilitada = true;
             return $this->habilitada;
         }
