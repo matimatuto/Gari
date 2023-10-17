@@ -41,6 +41,8 @@ class Colectivo {
             default:
                 if(!$boletoDevuelto) {
                     if($tarjeta->saldo > $this->tarifa) {
+                        $this->actualizarDias($tarjeta,$tiempo);
+                            $this->actualizarTarifa($tarjeta);
                         $tarjeta->descargarSaldo($this->tarifa);
                         $boleto->actualizarBoleto($this->linea,$this->tarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
     
