@@ -12,9 +12,9 @@ class ColectivoTest extends TestCase {
         $colectivo1->pagarCon($tarjeta1,$boleto1);
 
         $this->assertInstanceOf(Boleto::class, $boleto1);
-        $this->assertEquals($colectivo1->linea, $boleto1->lineaUsada);
-        $this->assertEquals($colectivo1->tarifa, $boleto1->tarifaUsada);
-        $this->assertEquals($tarjeta1->saldo, $boleto1->saldoRestante);
+        $this->assertEquals($colectivo1->obtenerLinea(), $boleto1->obtenerLineaUsada());
+        $this->assertEquals($colectivo1->obtenerTarifa(), $boleto1->obtenerTarifaUsada());
+        $this->assertEquals($tarjeta1->obtenerSaldo(), $boleto1->obtenerSaldoRestante());
     }
 
     public function testPagarBoletoErroneo(){
@@ -33,7 +33,7 @@ class ColectivoTest extends TestCase {
         $boleto3 = new Boleto();
         $colectivo3->pagarCon($tarjeta3,$boleto3);
 
-        $this->assertEquals(1,$tarjeta3->plus);
+        $this->assertEquals(1,$tarjeta3->obtenerPlus());
     }
 
     public function testFranquiciaCompleta(){
@@ -50,7 +50,7 @@ class ColectivoTest extends TestCase {
         $colectivo5 = new Colectivo(10);
         $boleto5 = new Boleto();
         $colectivo5->pagarCon($tarjeta5,$boleto5);
-        $this->assertEquals($colectivo5->mitadTarifa,$boleto5->tarifaUsada);
+        $this->assertEquals($colectivo5->obtenerMitadTarifa(),$boleto5->obtenertarifaUsada());
 
     }
 }

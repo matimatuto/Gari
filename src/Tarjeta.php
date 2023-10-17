@@ -2,9 +2,9 @@
 namespace TrabajoSube;
 
 class Tarjeta {
-    public $tipo = "Normal";
-    public $saldo;
-    public $plus = 2;
+    protected $tipo = "Normal";
+    protected $saldo;
+    protected $plus = 2;
 
 
     public function __construct($saldoInicial) {
@@ -27,6 +27,21 @@ class Tarjeta {
     public function descargarSaldo($restarSaldo) {
         $this->saldo -= $restarSaldo;
     }
+
+    public function descargarPlus(){
+        $this->plus--;
+    }
+
+    public function obtenerSaldo() {
+        return $this->saldo;
+    }
+    public function obtenerTipo() {
+        return $this->tipo;
+    }
+    public function obtenerPlus() {
+        return $this->plus;
+    }
+
 
 }
 
