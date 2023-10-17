@@ -16,11 +16,11 @@ class TarjetaFranquiciaCompleta extends Tarjeta{
         $this->viajesHoy++;
         $this->tiempoUltimoViaje = $tiempo;
         $this->actualizarHabilitacion($tiempo);
-        $this->fechaUltimoViaje = date("Y-m-d", $tiempo->time());
+        $this->fechaUltimoViaje = date("Y-m-d", $tiempo);
     }
-    
+
     public function actualizarHabilitacion($tiempo) {
-        if ($this->fechaUltimoViaje === date("Y-m-d", $tiempo->time())) {
+        if ($this->fechaUltimoViaje === date("Y-m-d",$tiempo)) {
             if($this->viajesHoy >= 2) {
                 $this->habilitada = false;
             }
