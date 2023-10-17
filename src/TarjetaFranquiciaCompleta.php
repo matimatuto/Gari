@@ -6,6 +6,10 @@ class TarjetaFranquiciaCompleta extends Tarjeta{
     public $habilitada = true;
     public $viajesHoy = 0;
     public $fechaUltimoViaje;
+    
+    public $dia;
+    public $hora;
+
 
     public function __construct($saldoInicial,$tipoDeTarjeta = "Jubilados") {
         parent::__construct($saldoInicial);
@@ -30,6 +34,19 @@ class TarjetaFranquiciaCompleta extends Tarjeta{
         } else {
             $this->viajesHoy = 1;
             $this->habilitada = true;
+        }
+    }
+    private function verificarHabilitada($tiempo) {
+        $dia = date("N",$tiempo);
+        $hora = date("G",$tiempo);
+
+        if($dia >= 1 && $dia <= 5 && $hora >= 6 && $hora <= 22) {
+            $this->habilitada = true;
+            return $this->habilitada;
+        }
+        else {
+            $this->habilitada = false;
+            return $this->habilitada;
         }
     }
 }
