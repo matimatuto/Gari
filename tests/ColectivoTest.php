@@ -120,16 +120,17 @@ class ColectivoTest extends TestCase {
         $colectivo4 = new Colectivo(10);
         $boleto4 = new Boleto();
         $tiempoFalso4 = new TiempoFalso();
-
-
+    
         $tarjeta7->cargarTarjeta(700);
-
+        $tarjeta7->agregarSaldoExtra();
+    
         $this->assertEquals(6600,$tarjeta7->saldo);
         $this->assertEquals(200,$tarjeta7->saldoExtra);
         
-        $colectivo4->pagarCon($tarjeta7,$boleto4,$tiempoFalso4);
+        $boleto4 = $colectivo4->pagarCon($tarjeta7,$boleto4,$tiempoFalso4->time());
         $this->assertEquals(6600,$tarjeta7->saldo);
         $this->assertEquals(0,$tarjeta7->saldoExtra);
     }
+    
 }
 ?>
