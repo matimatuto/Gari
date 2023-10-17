@@ -20,10 +20,11 @@ class Colectivo {
                     $tarjeta->descargarSaldo($this->sinTarifa);
                     $tarjeta->registrarViaje($tiempo);
                     $boleto->actualizarBoleto($this->linea,$this->sinTarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
-
+    
                     $boletoDevuelto = true;
                     return $boleto;
                 }
+                break;
             case 'TrabajoSube\TarjetaFranquiciaParcial':
                 if(!$boletoDevuelto) {
                     if($tarjeta->verificarHabilitada($tiempo)) {
@@ -31,31 +32,33 @@ class Colectivo {
                             $tarjeta->descargarSaldo($this->mitadTarifa);
                             $tarjeta->registrarViaje($tiempo);
                             $boleto->actualizarBoleto($this->linea,$this->mitadTarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
-
+    
                             $boletoDevuelto = true;
                             return $boleto;
                         }
                     }
                 }
+                break;
             default:
                 if(!$boletoDevuelto) {
                     if($tarjeta->saldo > $this->tarifa) {
                         $tarjeta->descargarSaldo($this->tarifa);
                         $boleto->actualizarBoleto($this->linea,$this->tarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
-
+    
                         return $boleto;
                     }
                     elseif($tarjeta->saldo - $this->tarifa > -211.84 && $tarjeta->plus > 0) {
                         $tarjeta->descargarSaldo($this->tarifa);
                         $boleto->actualizarBoleto($this->linea,$this->tarifa,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
                         $tarjeta->plus --;
-
+    
                         return $boleto;
                     }
-
+    
                     return false;
                 }
         }
     }
+    
     }
 ?>
