@@ -36,7 +36,7 @@ class TarjetaFranquiciaParcial extends Tarjeta{
     }
 
     public function verificarHabilitada($tiempo) {
-        if($this->tiempoUltimoViaje - $tiempo >= 300 || $this->tiempoUltimoViaje==null) {
+        if($this->tiempoUltimoViaje==null || $this->tiempoUltimoViaje - $tiempo >= 300) {
             $this->habilitada = true;
             return $this->habilitada;
         }
