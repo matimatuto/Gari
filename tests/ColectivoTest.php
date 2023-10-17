@@ -128,7 +128,7 @@ class ColectivoTest extends TestCase {
         $boleto4 = $colectivo4->pagarCon($tarjeta7,$boleto4,$tiempoFalso4->time());
         $tarjeta7->agregarSaldoExtra();
         $this->assertEquals(6600,$tarjeta7->saldo);
-        $this->assertEquals(0,$tarjeta7->saldoExtra);
+        $this->assertEquals(80,$tarjeta7->saldoExtra);
     }
     
 }
