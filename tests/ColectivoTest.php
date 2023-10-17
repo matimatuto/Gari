@@ -84,7 +84,8 @@ class ColectivoTest extends TestCase {
         $colectivo2 = new Colectivo(10);
         $boleto2 = new Boleto();
         $tiempoFalso2 = new TiempoFalso(0);
-
+        
+        $this->assertEquals(1,$tiempoFalso2->time());
         $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
         $tiempoFalso2->avanzar(120);
         $colectivo2->pagarCon($tarjeta5,$colectivo2,$tiempoFalso2->time());
