@@ -18,7 +18,7 @@ class Colectivo {
                 if($tarjeta->habilitada) {
                     $tarjeta->descargarSaldo($this->tarifaModificada);
                     $tarjeta->registrarViaje($tiempo);
-                    $boleto->actualizarBoleto($this->linea,$this->$this->tarifaModificada,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
+                    $boleto->actualizarBoleto($this->linea,$this->tarifaModificada,$tarjeta->saldo,$tarjeta->tipo,$tarjeta->ID);
     
                     $boletoDevuelto = true;
                     return $boleto;
