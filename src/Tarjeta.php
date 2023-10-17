@@ -54,7 +54,6 @@ class Tarjeta {
             $this->saldo = 6600;
         }
     }
-
 }
 
 
